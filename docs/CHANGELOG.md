@@ -48,7 +48,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Technical Stack
 - Frontend: Vue 3.3 (Composition API), Vite 4, Pinia, Tailwind CSS
-- Backend: PHP 8.3, Guzzle HTTP
+- Backend: PHP 8.3, cURL
 - Development: DDEV, Node.js 16+
 
 ### Security

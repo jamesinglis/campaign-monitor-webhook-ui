@@ -111,7 +111,7 @@ This single‑page web application (SPA) helps developers and marketers manage *
 
 ## 8 – Technical Architecture  
 ```
-[Vue SPA] —axios→ /api/proxy.php —Guzzle→ CM REST
+[Vue SPA] —axios→ /api/proxy.php —cURL→ CM REST
     ↓
 [Pinia Stores]
     ↓

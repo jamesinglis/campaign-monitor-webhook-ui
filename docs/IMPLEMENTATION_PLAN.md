@@ -240,7 +240,7 @@
 2. **Styling**: Tailwind CSS with custom components ✅
 3. **HTTP Client**: Axios for better error handling and interceptors ✅
 4. **Build Tool**: Vite for fast HMR and optimized builds ✅
-5. **PHP Version**: 8.3 with Guzzle for HTTP requests ✅
+5. **PHP Version**: 8.3 with cURL for HTTP requests (no dependencies) ✅
 6. **Error Logging**: File-based logging to /storage/logs/ ✅
 7. **Session Handling**: Frontend-only (no PHP sessions) ✅
 8. **HTTPS Enforcement**: Both client and server validation ✅

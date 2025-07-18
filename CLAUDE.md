@@ -28,7 +28,7 @@ This is a **completed project** with:
 ## Architecture
 
 ```
-[Vue SPA] —axios→ /api/proxy.php —Guzzle→ Campaign Monitor REST API
+[Vue SPA] —axios→ /api/proxy.php —cURL→ Campaign Monitor REST API
     ↓
 [Pinia Stores] ←→ [sessionStorage]
     ↓
@@ -36,8 +36,8 @@ This is a **completed project** with:
 ```
 
 ### Technology Stack
-- **Frontend**: Vue 3 (Composition API), Vite 4, Pinia, Tailwind CSS, Axios
-- **Backend**: PHP 8.3, Guzzle HTTP, vanilla PHP (no framework)
+- **Frontend**: Vue 3 (Composition API), Vite 4, Pinia, Tailwind CSS v4, Axios
+- **Backend**: PHP 8.3, cURL, vanilla PHP (no dependencies)
 - **State Management**: Pinia with sessionStorage persistence (security requirement)
 - **Build Tool**: Vite with PHP integration
 
@@ -65,6 +65,7 @@ This is a **completed project** with:
 - **Client switcher**: Quick switching without re-authentication
 - **Batch operations**: Concurrent webhook fetching with progress
 - **Graceful error handling**: Inline messages, no disruptive toasts
+- **Dark mode support**: System-aware theme with manual toggle (system/light/dark)
 
 ## Directory Structure (Actual)
 
@@ -81,7 +82,6 @@ This is a **completed project** with:
 /dist/              # Production build output
 /storage/logs/      # Error logs
 /docs/              # Documentation
-/vendor/            # PHP dependencies (Guzzle)
 /node_modules/      # JS dependencies
 ```
 
@@ -119,8 +119,6 @@ The application successfully proxies these Campaign Monitor v3.3 endpoints:
 - `npm run preview` - Preview production build
 
 **Backend**:
-- `ddev composer install` - Install PHP dependencies
-- `ddev composer update` - Update PHP dependencies
 - `ddev php api/proxy.php` - Test PHP proxy directly
 
 **API Testing**:

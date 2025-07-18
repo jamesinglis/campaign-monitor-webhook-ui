@@ -26,7 +26,7 @@ This single-page application (SPA) provides a visual interface for managing webh
 
 ### Prerequisites
 
-- PHP 8.1+ with Composer
+- PHP 8.1+ with cURL extension
 - Node.js 16+ with npm
 - [DDEV](https://ddev.readthedocs.io/en/stable/) (recommended) or any PHP web server
 - Campaign Monitor API key (account or client level)
@@ -46,9 +46,6 @@ This single-page application (SPA) provides a visual interface for managing webh
 
 3. **Install dependencies**
    ```bash
-   # PHP dependencies
-   ddev composer install
-   
    # Node dependencies
    npm install
    ```
@@ -72,11 +69,10 @@ This single-page application (SPA) provides a visual interface for managing webh
 
 If you prefer not to use DDEV:
 
-1. Ensure PHP 8.1+ is installed
-2. Install Composer dependencies: `composer install`
-3. Install Node dependencies: `npm install`
-4. Build assets: `npm run build`
-5. Configure your web server (Apache/Nginx) to:
+1. Ensure PHP 8.1+ with cURL extension is installed
+2. Install Node dependencies: `npm install`
+3. Build assets: `npm run build`
+4. Configure your web server (Apache/Nginx) to:
    - Set document root to the project directory
    - Route all requests to `index.php`
    - Ensure `/api/proxy.php` is accessible
@@ -161,9 +157,9 @@ If using an account-level API key:
 - **Axios** - HTTP client with interceptors
 
 ### Backend Stack
-- **PHP 8.3** - Server-side proxy
-- **Guzzle HTTP** - Campaign Monitor API client
-- **No framework** - Lightweight vanilla PHP
+- **PHP 8.3** - Server-side proxy (no dependencies)
+- **cURL** - Campaign Monitor API client
+- **Vanilla PHP** - Lightweight, self-contained
 
 ## Security
 
@@ -191,7 +187,6 @@ If using an account-level API key:
 ddev start
 
 # Install/update dependencies
-ddev composer install
 npm install
 
 # Build for production
