@@ -5,7 +5,7 @@ A modern web application for managing Campaign Monitor webhook subscriptions wit
 ![Version](https://img.shields.io/badge/version-1.0.0-blue)
 ![Vue.js](https://img.shields.io/badge/Vue.js-3.3-4FC08D?logo=vue.js)
 ![PHP](https://img.shields.io/badge/PHP-8.3-777BB4?logo=php)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.3-06B6D4?logo=tailwindcss)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind-4.1-06B6D4?logo=tailwindcss)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
 ## Overview
@@ -19,6 +19,7 @@ This single-page application (SPA) provides a visual interface for managing webh
 - 🎯 **Full CRUD Operations** - Create, read, update (recreate), and delete webhooks
 - 📊 **Visual Status Indicators** - See cache freshness and webhook counts at a glance
 - 🔄 **Client Switching** - Quick switch between clients without re-authentication
+- 🌙 **Dark Mode Support** - System-aware theme with manual toggle (light/dark/auto)
 - ⚡ **Optimized Performance** - Sub-150KB bundle, <2s first paint, <1s operations
 
 ## Getting Started
@@ -121,6 +122,15 @@ If you prefer not to use DDEV:
 1. Click the **🗑 Delete** button next to any webhook
 2. Confirm the deletion
 
+### Dark Mode
+
+The application includes a smart dark mode toggle in the top navigation bar:
+- **System** (default) - Follows your OS dark mode preference
+- **Light** - Always light theme
+- **Dark** - Always dark theme
+
+Click the theme icon (computer/sun/moon) to cycle through modes.
+
 ### Switching Clients
 
 If using an account-level API key:
@@ -147,7 +157,7 @@ If using an account-level API key:
 - **Vue 3** - Composition API for modern component architecture
 - **Vite 4** - Lightning-fast build tool
 - **Pinia** - State management with persistence
-- **Tailwind CSS** - Utility-first styling
+- **Tailwind CSS v4** - Utility-first styling with dark mode support
 - **Axios** - HTTP client with interceptors
 
 ### Backend Stack

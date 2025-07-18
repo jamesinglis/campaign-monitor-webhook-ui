@@ -161,5 +161,11 @@ This single‑page web application (SPA) helps developers and marketers manage *
 * Test webhook button to verify endpoint connectivity  
 * Bulk operations (delete/create multiple webhooks)  
 * Export/import webhook configurations  
-* Dark mode theme  
 * Webhook activity logs
+
+## 14 – Recent Implementations (Post v1.0.0)
+* ✅ **Dark Mode Theme** - System-aware dark mode with manual toggle (light/dark/auto)
+  - Tailwind CSS v4 dark mode configuration
+  - Pinia theme store with sessionStorage persistence  
+  - DarkModeToggle component in navigation bar
+  - Comprehensive dark mode styling across all components

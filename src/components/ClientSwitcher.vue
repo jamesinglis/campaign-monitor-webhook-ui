@@ -2,7 +2,7 @@
   <div class="relative">
     <button
       @click="showDropdown = !showDropdown"
-      class="flex items-center px-3 py-1 text-blue-100 hover:text-blue-900 hover:bg-white hover:bg-opacity-90 rounded-lg transition-colors duration-200 text-sm"
+      class="flex items-center px-3 py-1 text-blue-100 dark:text-blue-300 hover:text-blue-900 dark:hover:text-blue-100 hover:bg-white dark:hover:bg-gray-700 hover:bg-opacity-90 dark:hover:bg-opacity-90 rounded-lg transition-colors duration-200 text-sm"
     >
       <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
@@ -14,23 +14,23 @@
     </button>
     
     <!-- Dropdown -->
-    <div v-if="showDropdown" class="absolute right-0 mt-2 w-80 bg-white rounded-lg shadow-lg border border-gray-200 z-50">
+    <div v-if="showDropdown" class="absolute right-0 mt-2 w-80 bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-600 z-50">
       <div class="p-3">
         <!-- Filter Input -->
         <div v-if="clients.length > 0" class="mb-3">
-          <label class="block text-xs font-medium text-gray-700 mb-1">Filter Clients</label>
+          <label class="block text-xs font-medium text-gray-700 dark:text-gray-300 mb-1">Filter Clients</label>
           <input
             v-model="filterText"
             type="text"
             placeholder="Search clients..."
-            class="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md text-sm bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
           />
         </div>
         
         <!-- Client List -->
         <div v-if="filteredClients.length > 0" class="mb-2">
-          <label class="block text-xs font-medium text-gray-700 mb-1">Available Clients</label>
-          <div class="max-h-60 overflow-y-auto border border-gray-200 rounded-md">
+          <label class="block text-xs font-medium text-gray-700 dark:text-gray-300 mb-1">Available Clients</label>
+          <div class="max-h-60 overflow-y-auto border border-gray-200 dark:border-gray-600 rounded-md">
             <button
               v-for="client in filteredClients"
               :key="client.ClientID"
@@ -38,12 +38,12 @@
               :class="[
                 'w-full text-left px-3 py-3 text-sm transition-colors duration-200 first:rounded-t-md last:rounded-b-md',
                 client.ClientID === authStore.clientId
-                  ? 'bg-blue-100 text-blue-900'
-                  : 'hover:bg-gray-100 text-gray-700'
+                  ? 'bg-blue-100 dark:bg-blue-900 text-blue-900 dark:text-blue-100'
+                  : 'hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300'
               ]"
             >
               <div class="font-medium">{{ client.Name }}</div>
-              <div class="text-xs text-gray-500">{{ client.ClientID }}</div>
+              <div class="text-xs text-gray-500 dark:text-gray-400">{{ client.ClientID }}</div>
             </button>
           </div>
         </div>
@@ -52,7 +52,7 @@
         <button
           @click="loadClients"
           :disabled="loading"
-          class="w-full flex items-center justify-center px-3 py-2 text-sm bg-blue-600 text-white rounded-md hover:bg-blue-700 disabled:opacity-50 transition-colors duration-200"
+          class="w-full flex items-center justify-center px-3 py-2 text-sm bg-blue-600 dark:bg-blue-700 text-white rounded-md hover:bg-blue-700 dark:hover:bg-blue-600 disabled:opacity-50 transition-colors duration-200"
         >
           <svg v-if="loading" class="animate-spin -ml-1 mr-2 h-4 w-4" fill="none" viewBox="0 0 24 24">
             <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>

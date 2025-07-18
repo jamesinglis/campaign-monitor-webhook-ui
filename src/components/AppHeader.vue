@@ -1,5 +1,5 @@
 <template>
-  <header class="bg-gradient-to-r from-blue-600 to-blue-700 shadow-lg">
+  <header class="bg-gradient-to-r from-blue-600 to-blue-700 dark:from-gray-800 dark:to-gray-900 shadow-lg">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between items-center h-16">
         <div class="flex items-center">
@@ -35,6 +35,9 @@
             </span>
           </div>
           
+          <!-- Dark Mode Toggle -->
+          <DarkModeToggle />
+          
           <button
             v-if="authStore.isAuthenticated"
             @click="handleLogout"
@@ -55,6 +58,7 @@
 import { useAuthStore } from '../stores/auth'
 import { useDataStore } from '../stores/data'
 import ClientSwitcher from './ClientSwitcher.vue'
+import DarkModeToggle from './DarkModeToggle.vue'
 
 const authStore = useAuthStore()
 const dataStore = useDataStore()

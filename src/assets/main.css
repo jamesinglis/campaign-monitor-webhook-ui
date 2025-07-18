@@ -1,4 +1,10 @@
 @import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Enable dark color scheme for better browser integration */
+html.dark {
+  color-scheme: dark;
+}
 
 /* Additional base styles to ensure proper rendering */
 *,
@@ -19,4 +25,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: linear-gradient(to bottom right, #f9fafb, #e5e7eb);
+  color: #1f2937;
+  transition: background 0.3s ease, color 0.3s ease;
 }

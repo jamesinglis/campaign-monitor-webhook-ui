@@ -1,14 +1,14 @@
 <template>
   <div v-if="isOpen" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-    <div class="bg-white rounded-2xl shadow-2xl max-w-lg w-full mx-4 transform transition-all">
+    <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl max-w-lg w-full mx-4 transform transition-all">
       <div class="p-6">
         <div class="flex items-center mb-6">
-          <div class="bg-blue-100 rounded-full p-2 mr-3">
-            <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div class="bg-blue-100 dark:bg-blue-900 rounded-full p-2 mr-3">
+            <svg class="w-6 h-6 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
             </svg>
           </div>
-          <h3 class="text-xl font-bold text-gray-900">
+          <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100">
             {{ isEdit ? 'Edit Webhook' : 'Add Webhook' }}
           </h3>
         </div>
@@ -16,7 +16,7 @@
         <form @submit.prevent="handleSubmit" class="space-y-4">
           <!-- URL Field -->
           <div>
-            <label for="webhook-url" class="block text-sm font-medium text-gray-700 mb-1">
+            <label for="webhook-url" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
               Webhook URL
             </label>
             <input
@@ -25,16 +25,16 @@
               type="url"
               required
               placeholder="https://your-domain.com/webhook"
-              class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
               :class="{ 'border-red-500': errors.url }"
             />
-            <p v-if="errors.url" class="mt-1 text-sm text-red-600">{{ errors.url }}</p>
-            <p class="mt-1 text-xs text-gray-500">Must be a valid HTTPS URL</p>
+            <p v-if="errors.url" class="mt-1 text-sm text-red-600 dark:text-red-400">{{ errors.url }}</p>
+            <p class="mt-1 text-xs text-gray-500 dark:text-gray-400">Must be a valid HTTPS URL</p>
           </div>
           
           <!-- Events Field -->
           <div>
-            <label class="block text-sm font-medium text-gray-700 mb-2">
+            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
               Events to Subscribe To
             </label>
             <div class="space-y-2">
@@ -43,18 +43,18 @@
                   v-model="form.events"
                   type="checkbox"
                   :value="event.value"
-                  class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+                  class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-700"
                 />
-                <span class="ml-2 text-sm text-gray-700">{{ event.label }}</span>
-                <span class="ml-2 text-xs text-gray-500">({{ event.description }})</span>
+                <span class="ml-2 text-sm text-gray-700 dark:text-gray-300">{{ event.label }}</span>
+                <span class="ml-2 text-xs text-gray-500 dark:text-gray-400">({{ event.description }})</span>
               </label>
             </div>
-            <p v-if="errors.events" class="mt-1 text-sm text-red-600">{{ errors.events }}</p>
+            <p v-if="errors.events" class="mt-1 text-sm text-red-600 dark:text-red-400">{{ errors.events }}</p>
           </div>
           
           <!-- Payload Format Field -->
           <div>
-            <label class="block text-sm font-medium text-gray-700 mb-2">
+            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
               Payload Format
             </label>
             <div class="space-y-2">
@@ -63,29 +63,29 @@
                   v-model="form.payloadFormat"
                   type="radio"
                   value="json"
-                  class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300"
+                  class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700"
                 />
-                <span class="ml-2 text-sm text-gray-700">JSON</span>
-                <span class="ml-2 text-xs text-gray-500">(Recommended)</span>
+                <span class="ml-2 text-sm text-gray-700 dark:text-gray-300">JSON</span>
+                <span class="ml-2 text-xs text-gray-500 dark:text-gray-400">(Recommended)</span>
               </label>
               <label class="flex items-center">
                 <input
                   v-model="form.payloadFormat"
                   type="radio"
                   value="xml"
-                  class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300"
+                  class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700"
                 />
-                <span class="ml-2 text-sm text-gray-700">XML</span>
+                <span class="ml-2 text-sm text-gray-700 dark:text-gray-300">XML</span>
               </label>
             </div>
-            <p v-if="errors.payloadFormat" class="mt-1 text-sm text-red-600">{{ errors.payloadFormat }}</p>
+            <p v-if="errors.payloadFormat" class="mt-1 text-sm text-red-600 dark:text-red-400">{{ errors.payloadFormat }}</p>
           </div>
           
           <div class="mt-8 flex justify-end space-x-3">
             <button
               type="button"
               @click="$emit('close')"
-              class="px-4 py-2 bg-gray-100 text-gray-800 rounded-lg hover:bg-gray-200 transition-colors duration-200 font-medium"
+              class="px-4 py-2 bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors duration-200 font-medium"
             >
               Cancel
             </button>
@@ -155,12 +155,10 @@ const resetForm = () => {
   errors.value = {}
   if (props.webhook) {
     // Edit mode - populate form with existing webhook data
-    console.log('Editing webhook data:', props.webhook)
     form.url = props.webhook.Url || ''
     form.events = props.webhook.Events || []
     // Convert Campaign Monitor's "Json"/"Xml" to lowercase for form
     form.payloadFormat = (props.webhook.PayloadFormat || 'json').toLowerCase()
-    console.log('Form populated with:', { url: form.url, events: form.events, payloadFormat: form.payloadFormat })
   } else {
     // Add mode - reset to defaults
     form.url = ''

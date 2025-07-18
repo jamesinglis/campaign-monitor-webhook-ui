@@ -1,21 +1,21 @@
 <template>
-  <div class="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
+  <div class="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
     <AppHeader />
     
     <main class="max-w-7xl mx-auto py-8 sm:px-6 lg:px-8">
       <!-- Authentication Form -->
       <div v-if="!authStore.isAuthenticated" class="max-w-lg mx-auto">
-        <div class="bg-white shadow-xl rounded-2xl p-8 border border-gray-200">
+        <div class="bg-white dark:bg-gray-800 shadow-xl rounded-2xl p-8 border border-gray-200 dark:border-gray-700">
           <div class="text-center mb-8">
             <div class="mx-auto w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center mb-4 overflow-hidden">
               <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="max-width: 32px; max-height: 32px;">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
               </svg>
             </div>
-            <h2 class="text-3xl font-bold text-gray-900">
+            <h2 class="text-3xl font-bold text-gray-900 dark:text-white">
               {{ !authStore.isAuthenticated ? 'Welcome' : 'Client ID Required' }}
             </h2>
-            <p class="mt-3 text-gray-600">
+            <p class="mt-3 text-gray-600 dark:text-gray-300">
               {{ !authStore.isAuthenticated 
                 ? 'Enter your Campaign Monitor API credentials to manage webhooks'
                 : 'Please provide your Client ID to access your subscriber lists'
@@ -35,15 +35,15 @@
       <div v-else class="space-y-6">
         <!-- Client Selection for Account-Level Keys -->
         <div v-if="authStore.isAccountLevel && !authStore.clientId" class="max-w-lg mx-auto">
-          <div class="bg-white shadow-xl rounded-2xl p-8 border border-gray-200">
+          <div class="bg-white dark:bg-gray-800 shadow-xl rounded-2xl p-8 border border-gray-200 dark:border-gray-700">
             <div class="text-center mb-8">
               <div class="mx-auto w-16 h-16 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center mb-4">
                 <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                 </svg>
               </div>
-              <h2 class="text-3xl font-bold text-gray-900">Select Client</h2>
-              <p class="mt-3 text-gray-600">
+              <h2 class="text-3xl font-bold text-gray-900 dark:text-white">Select Client</h2>
+              <p class="mt-3 text-gray-600 dark:text-gray-300">
                 Choose which client you want to manage webhooks for
               </p>
             </div>
@@ -53,7 +53,7 @@
         
         <!-- Summary Stats -->
         <div v-if="authStore.clientId" class="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div class="bg-white rounded-lg shadow p-6">
+          <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
             <div class="flex items-center">
               <div class="flex-shrink-0">
                 <svg class="h-8 w-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -61,13 +61,13 @@
                 </svg>
               </div>
               <div class="ml-4">
-                <p class="text-sm font-medium text-gray-500">Total Lists</p>
-                <p class="text-2xl font-semibold text-gray-900">{{ dataStore.lists.length }}</p>
+                <p class="text-sm font-medium text-gray-500 dark:text-gray-400">Total Lists</p>
+                <p class="text-2xl font-semibold text-gray-900 dark:text-white">{{ dataStore.lists.length }}</p>
               </div>
             </div>
           </div>
           
-          <div class="bg-white rounded-lg shadow p-6">
+          <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
             <div class="flex items-center">
               <div class="flex-shrink-0">
                 <svg class="h-8 w-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -75,13 +75,13 @@
                 </svg>
               </div>
               <div class="ml-4">
-                <p class="text-sm font-medium text-gray-500">Total Webhooks</p>
-                <p class="text-2xl font-semibold text-gray-900">{{ dataStore.totalWebhooks }}</p>
+                <p class="text-sm font-medium text-gray-500 dark:text-gray-400">Total Webhooks</p>
+                <p class="text-2xl font-semibold text-gray-900 dark:text-white">{{ dataStore.totalWebhooks }}</p>
               </div>
             </div>
           </div>
           
-          <div class="bg-white rounded-lg shadow p-6">
+          <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
             <div class="flex items-center">
               <div class="flex-shrink-0">
                 <svg class="h-8 w-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -89,15 +89,15 @@
                 </svg>
               </div>
               <div class="ml-4">
-                <p class="text-sm font-medium text-gray-500">Active Subscribers</p>
-                <p class="text-2xl font-semibold text-gray-900">{{ totalSubscribers }}</p>
+                <p class="text-sm font-medium text-gray-500 dark:text-gray-400">Active Subscribers</p>
+                <p class="text-2xl font-semibold text-gray-900 dark:text-white">{{ totalSubscribers }}</p>
               </div>
             </div>
           </div>
         </div>
         
         <!-- Actions Bar -->
-        <div v-if="authStore.clientId" class="bg-white rounded-lg shadow p-4">
+        <div v-if="authStore.clientId" class="bg-white dark:bg-gray-800 rounded-lg shadow p-4">
           <div class="flex items-center">
             <div class="flex items-center space-x-4">
               <button
@@ -128,7 +128,7 @@
                 v-if="dataStore.lists.length > 0"
                 @click="() => loadWebhooks(true)"
                 :disabled="loadingWebhooks || dataStore.loading.initialLoad"
-                class="inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50"
+                class="inline-flex items-center px-4 py-2 border border-gray-300 dark:border-gray-600 text-sm font-medium rounded-md text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50"
               >
                 <svg v-if="loadingWebhooks || dataStore.loading.initialLoad" class="animate-spin -ml-1 mr-2 h-4 w-4 text-gray-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                   <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
@@ -162,7 +162,7 @@
               <button
                 v-if="dataStore.lists.length > 0"
                 @click="expandAll"
-                class="inline-flex items-center px-3 py-1.5 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                class="inline-flex items-center px-3 py-1.5 border border-gray-300 dark:border-gray-600 text-sm font-medium rounded-md text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
               >
                 Expand All
               </button>
@@ -170,7 +170,7 @@
               <button
                 v-if="dataStore.lists.length > 0"
                 @click="collapseAll"
-                class="inline-flex items-center px-3 py-1.5 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                class="inline-flex items-center px-3 py-1.5 border border-gray-300 dark:border-gray-600 text-sm font-medium rounded-md text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
               >
                 Collapse All
               </button>
@@ -304,11 +304,8 @@ const loadLists = async (forceRefresh = false) => {
     const result = await dataStore.loadListsIfNeeded(apiClient, clientIdToUse, forceRefresh)
     
     if (result.fromCache) {
-      console.log('Using cached lists data')
     } else if (result.inProgress) {
-      console.log('Lists load already in progress')
     } else {
-      console.log('Successfully loaded lists:', result.data)
       
       if (result.statsErrors && Object.keys(result.statsErrors).length > 0) {
         console.warn('Some stats failed to load:', result.statsErrors)
@@ -340,11 +337,8 @@ const loadWebhooks = async (forceRefresh = false) => {
     const result = await dataStore.loadWebhooksIfNeeded(apiClient, clientIdToUse, forceRefresh)
     
     if (result.fromCache) {
-      console.log('Using cached webhooks data')
     } else if (result.inProgress) {
-      console.log('Webhooks load already in progress')
     } else {
-      console.log('Successfully loaded webhooks:', result.data)
       
       // Handle any errors
       if (result.errors && Object.keys(result.errors).length > 0) {
@@ -456,14 +450,11 @@ const initialLoad = async (forceRefresh = false) => {
     const result = await dataStore.loadInitialData(apiClient, clientIdToUse, forceRefresh)
     
     if (result.inProgress) {
-      console.log('Initial load already in progress')
       return
     }
     
     if (result.fromCache) {
-      console.log('Using cached data for initial load')
     } else {
-      console.log('Successfully loaded initial data')
       
       // Handle any errors from stats or webhooks
       if (result.lists?.statsErrors && Object.keys(result.lists.statsErrors).length > 0) {
@@ -483,24 +474,19 @@ const initialLoad = async (forceRefresh = false) => {
 watch(
   () => authStore.clientId,
   (newClientId, oldClientId) => {
-    console.log('Client ID watcher triggered:', { newClientId, oldClientId, hasValidAuth: authStore.hasValidAuth })
     
     // Handle both initial client selection (oldClientId is null) and client changes
     if (newClientId && newClientId !== oldClientId) {
-      console.log('Client selected or changed, loading data for:', newClientId)
       
       // Always clear data and cancel requests when client changes to ensure fresh data
       if (oldClientId) {
-        console.log('Client changed, cancelling old requests and clearing data')
         dataStore.clearData()
         apiClient.cancelRequestsForClient(oldClientId)
       }
       
       if (authStore.hasValidAuth) {
-        console.log('Triggering initialLoad for client selection/change')
         initialLoad()
       } else {
-        console.log('Cannot reload - hasValidAuth is false')
       }
     }
   }
@@ -511,7 +497,6 @@ watch(
   () => authStore.apiKey,
   (newKey, oldKey) => {
     if (newKey && oldKey && newKey !== oldKey) {
-      console.log('API key changed, invalidating cache and reloading data')
       dataStore.clearData()
       if (authStore.hasValidAuth) {
         initialLoad()
@@ -525,28 +510,14 @@ watch(
 // Load lists and webhooks automatically when authenticated
 onMounted(() => {
   if (authStore.hasValidAuth && authStore.clientId) {
-    console.log('onMounted: Checking if initial load needed', {
-      hasValidAuth: authStore.hasValidAuth,
-      clientId: authStore.clientId,
-      hasLists: dataStore.lists.length > 0,
-      cacheStatus: {
-        lists: dataStore.getCacheStatus('lists', authStore.clientId),
-        webhooks: dataStore.getCacheStatus('webhooks', authStore.clientId)
-      }
-    })
     
     // Only load if we don't have valid cached data
     const needsListsLoad = dataStore.shouldLoadData('lists', authStore.clientId)
     const needsWebhooksLoad = dataStore.shouldLoadData('webhooks', authStore.clientId)
     
     if (needsListsLoad || needsWebhooksLoad) {
-      console.log('onMounted: Cache invalid or missing, triggering initialLoad', {
-        needsListsLoad,
-        needsWebhooksLoad
-      })
       initialLoad()
     } else {
-      console.log('onMounted: Using cached data, no need to reload')
     }
   }
   
@@ -588,7 +559,6 @@ const checkAndRefreshAgingData = async () => {
   
   // Refresh aging or expired data silently in the background
   if (currentStatus.lists === 'aging' || currentStatus.lists === 'expired') {
-    console.log('Background refresh: Lists data is aging/expired')
     try {
       await loadLists(true) // Force refresh for aging data
     } catch (err) {
@@ -597,7 +567,6 @@ const checkAndRefreshAgingData = async () => {
   }
   
   if (currentStatus.webhooks === 'aging' || currentStatus.webhooks === 'expired') {
-    console.log('Background refresh: Webhooks data is aging/expired')
     try {
       await loadWebhooks(true) // Force refresh for aging data
     } catch (err) {

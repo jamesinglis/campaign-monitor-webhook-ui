@@ -81,7 +81,6 @@ class ApiClient {
   cancelRequestsForClient(clientId) {
     const controllers = this.activeRequests.get(clientId)
     if (controllers) {
-      console.log(`Cancelling ${controllers.size} active requests for client ${clientId}`)
       controllers.forEach(controller => {
         controller.abort()
       })
@@ -91,7 +90,6 @@ class ApiClient {
   
   // Cancel all active requests
   cancelAllRequests() {
-    console.log('Cancelling all active requests')
     this.activeRequests.forEach((controllers, clientId) => {
       controllers.forEach(controller => {
         controller.abort()

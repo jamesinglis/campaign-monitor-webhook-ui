@@ -14,30 +14,30 @@
     <div
       v-if="showPopover"
       ref="popover"
-      class="absolute right-0 top-full mt-2 w-64 bg-white rounded-lg shadow-lg border border-gray-200 z-50"
+      class="absolute right-0 top-full mt-2 w-64 bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-600 z-50"
       @click.stop
     >
       <div class="p-3">
         <div class="mb-2">
-          <h3 class="font-semibold text-gray-900 capitalize">{{ type }}</h3>
+          <h3 class="font-semibold text-gray-900 dark:text-white capitalize">{{ type }}</h3>
         </div>
         
         <div class="space-y-2">
           <div class="flex items-center justify-between">
-            <span class="text-sm text-gray-600">Status:</span>
+            <span class="text-sm text-gray-600 dark:text-gray-400">Status:</span>
             <span :class="getCacheStatusColor(status)" class="text-sm font-medium">
               {{ statusText }}
             </span>
           </div>
           
           <div v-if="age" class="flex items-center justify-between">
-            <span class="text-sm text-gray-600">Age:</span>
-            <span class="text-sm text-gray-900">{{ formatCacheAge(age) }}</span>
+            <span class="text-sm text-gray-600 dark:text-gray-400">Age:</span>
+            <span class="text-sm text-gray-900 dark:text-gray-100">{{ formatCacheAge(age) }}</span>
           </div>
           
           <div v-if="lastUpdated" class="flex items-center justify-between">
-            <span class="text-sm text-gray-600">Updated:</span>
-            <span class="text-sm text-gray-900">{{ formatDateTime(lastUpdated) }}</span>
+            <span class="text-sm text-gray-600 dark:text-gray-400">Updated:</span>
+            <span class="text-sm text-gray-900 dark:text-gray-100">{{ formatDateTime(lastUpdated) }}</span>
           </div>
         </div>
       </div>
@@ -83,23 +83,23 @@ const statusText = computed(() => {
 
 const getStatusIconClass = () => {
   switch (props.status) {
-    case 'fresh': return 'bg-green-100 text-green-600 hover:bg-green-200'
-    case 'aging': return 'bg-yellow-100 text-yellow-600 hover:bg-yellow-200'
-    case 'expired': return 'bg-red-100 text-red-600 hover:bg-red-200'
-    case 'stale': return 'bg-red-100 text-red-600 hover:bg-red-200'
-    case 'client-mismatch': return 'bg-orange-100 text-orange-600 hover:bg-orange-200'
-    default: return 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+    case 'fresh': return 'bg-green-100 dark:bg-green-900/50 text-green-600 dark:text-green-400 hover:bg-green-200 dark:hover:bg-green-900/70'
+    case 'aging': return 'bg-yellow-100 dark:bg-yellow-900/50 text-yellow-600 dark:text-yellow-400 hover:bg-yellow-200 dark:hover:bg-yellow-900/70'
+    case 'expired': return 'bg-red-100 dark:bg-red-900/50 text-red-600 dark:text-red-400 hover:bg-red-200 dark:hover:bg-red-900/70'
+    case 'stale': return 'bg-red-100 dark:bg-red-900/50 text-red-600 dark:text-red-400 hover:bg-red-200 dark:hover:bg-red-900/70'
+    case 'client-mismatch': return 'bg-orange-100 dark:bg-orange-900/50 text-orange-600 dark:text-orange-400 hover:bg-orange-200 dark:hover:bg-orange-900/70'
+    default: return 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-600'
   }
 }
 
 const getCacheStatusColor = (status) => {
   switch (status) {
-    case 'fresh': return 'text-green-600'
-    case 'aging': return 'text-yellow-600'
-    case 'expired': return 'text-red-600'
-    case 'stale': return 'text-red-600'
-    case 'client-mismatch': return 'text-orange-600'
-    default: return 'text-gray-600'
+    case 'fresh': return 'text-green-600 dark:text-green-400'
+    case 'aging': return 'text-yellow-600 dark:text-yellow-400'
+    case 'expired': return 'text-red-600 dark:text-red-400'
+    case 'stale': return 'text-red-600 dark:text-red-400'
+    case 'client-mismatch': return 'text-orange-600 dark:text-orange-400'
+    default: return 'text-gray-600 dark:text-gray-400'
   }
 }
 
