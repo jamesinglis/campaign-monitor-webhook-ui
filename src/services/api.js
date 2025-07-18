@@ -131,6 +131,17 @@ class ApiClient {
     }
   }
 
+  // Get specific client details
+  async getClientDetails(clientId) {
+    try {
+      const response = await this.client.get(`/clients/${clientId}.json`)
+      return response.data
+    } catch (error) {
+      console.error('Failed to get client details:', error)
+      throw error
+    }
+  }
+
   // Get account billing details (account-level API key required)
   async getAccountBillingDetails() {
     try {

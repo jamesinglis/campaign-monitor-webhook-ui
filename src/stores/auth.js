@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia'
 import apiClient from '../services/api'
+import { useDataStore } from './data'
 
 export const useAuthStore = defineStore('auth', {
   state: () => ({
@@ -71,6 +72,12 @@ export const useAuthStore = defineStore('auth', {
         // Test account-level access first
         const clients = await apiClient.getAccountClients()
         
+        // Store clients data in dataStore for future use (both account and client level keys)
+        if (Array.isArray(clients) && clients.length > 0) {
+          const dataStore = useDataStore()
+          dataStore.setClients(clients, 'account')
+        }
+        
         // Both account and client-level keys can access /clients.json
         // So we need to test a truly account-level endpoint
         try {
@@ -83,9 +90,27 @@ export const useAuthStore = defineStore('auth', {
           if (billingError.response?.status === 401 || billingError.response?.status === 403) {
             this.accountType = 'client'
             
-            // Auto-set client ID for client-level keys
+            // For client-level keys, clients array might be empty, so we need to get client ID another way
             if (Array.isArray(clients) && clients.length > 0) {
+              // If we got client data from /clients.json (rare for client-level keys)
               this.clientId = clients[0].ClientID
+            } else if (this.clientId) {
+              // If we already have a clientId set (from user input or elsewhere)
+              // Continue with existing clientId
+            }
+            
+            // If we have a client ID, try to get detailed client info
+            if (this.clientId) {
+              try {
+                const clientDetails = await apiClient.getClientDetails(this.clientId)
+                if (clientDetails) {
+                  // Store the detailed client info in dataStore
+                  const dataStore = useDataStore()
+                  dataStore.setClients([clientDetails], 'account')
+                }
+              } catch (clientError) {
+                console.warn('Could not fetch detailed client info:', clientError)
+              }
             }
           } else {
             // If we can get clients but billing fails for other reasons, assume account-level

@@ -60,7 +60,10 @@ export const useDataStore = defineStore('data', {
     },
     
     getClientById: (state) => (clientId) => {
-      return state.clients.find(client => client.ClientID === clientId)
+      return state.clients.find(client => 
+        client.ClientID === clientId || 
+        client.BasicDetails?.ClientID === clientId
+      )
     },
     
     totalWebhooks: (state) => {

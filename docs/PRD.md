@@ -169,3 +169,12 @@ This single‑page web application (SPA) helps developers and marketers manage *
   - Pinia theme store with sessionStorage persistence  
   - DarkModeToggle component in navigation bar
   - Comprehensive dark mode styling across all components
+
+* ✅ **Print-Optimized Reports** (v1.1.0) - Professional print layout for webhook documentation
+  - Print-only header with app title and client name display
+  - Automatic webhook expansion regardless of screen state
+  - Hidden interactive elements (buttons, controls, navigation)
+  - Optimized table layout with proper column alignment
+  - Enhanced client name resolution for both account and client-level keys
+  - Clean typography and spacing optimized for print/PDF output
+  - Support for portrait mode printing without horizontal scroll

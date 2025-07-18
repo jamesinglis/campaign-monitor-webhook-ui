@@ -22,6 +22,7 @@ This is a **completed project** with:
 - ✅ PHP backend proxy with Campaign Monitor API integration
 - ✅ Smart caching system with TTL management
 - ✅ All CRUD operations for webhook management
+- ✅ Print-optimized reports with professional layout
 - ✅ Production build optimized and ready
 - ✅ Comprehensive error handling and validation
 
@@ -66,6 +67,7 @@ This is a **completed project** with:
 - **Batch operations**: Concurrent webhook fetching with progress
 - **Graceful error handling**: Inline messages, no disruptive toasts
 - **Dark mode support**: System-aware theme with manual toggle (system/light/dark)
+- **Print reports**: Professional print layout with client names and expanded webhooks
 
 ## Directory Structure (Actual)
 
@@ -130,6 +132,10 @@ The application successfully proxies these Campaign Monitor v3.3 endpoints:
 - `ddev stop` - Stop development environment
 - `ddev ssh` - SSH into web container
 - `ddev logs` - View container logs
+
+## Documentation Guidelines
+
+**CHANGELOG.md**: Do not update the changelog file unless/until we want to prepare a new version and the user explicitly asks for this. The changelog should only be updated when formally releasing a new version.
 
 ## Development Workflow Notes
 

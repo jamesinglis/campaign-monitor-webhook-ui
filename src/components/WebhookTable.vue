@@ -1,6 +1,6 @@
 <template>
   <div class="overflow-hidden">
-    <div v-if="webhooks.length === 0" class="text-center py-8">
+    <div v-if="webhooks.length === 0" class="text-center py-8 print:hidden">
       <svg class="mx-auto h-12 w-12 text-gray-400 dark:text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
       </svg>
@@ -9,22 +9,22 @@
     </div>
     
     <div v-else class="overflow-x-auto">
-      <table class="min-w-full">
+      <table class="min-w-full print:text-xs">
         <thead>
           <tr class="border-b border-gray-200 dark:border-gray-700">
-            <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+            <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider print:px-1 print:py-1 print:text-xs">
               URL
             </th>
-            <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+            <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider print:px-1 print:py-1 print:text-xs">
               Events
             </th>
-            <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+            <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider print:px-1 print:py-1 print:text-xs">
               Format
             </th>
-            <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+            <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider print:px-1 print:py-1 print:text-xs">
               Status
             </th>
-            <th class="px-4 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+            <th class="px-4 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider print:hidden">
               Actions
             </th>
           </tr>
@@ -33,28 +33,27 @@
           <tr 
             v-for="webhook in webhooks" 
             :key="webhook.WebhookID"
-            class="hover:bg-gray-50 dark:hover:bg-gray-700"
-          >
-            <td class="px-4 py-3">
+            class="hover:bg-gray-50 dark:hover:bg-gray-700 print:text-xs">
+            <td class="px-4 py-3 print:px-1 print:py-1">
               <div class="flex items-center">
-                <div class="flex-shrink-0 w-2 h-2 bg-green-400 dark:bg-green-500 rounded-full mr-3"></div>
+                <div class="flex-shrink-0 w-2 h-2 bg-green-400 dark:bg-green-500 rounded-full mr-3 print:hidden"></div>
                 <div class="min-w-0 flex-1">
-                  <p class="text-sm font-medium text-gray-900 dark:text-gray-100 truncate">
+                  <p class="text-sm font-medium text-gray-900 dark:text-gray-100 truncate print:hidden">
                     {{ truncateUrl(webhook.Url) }}
                   </p>
-                  <p class="text-xs text-gray-500 dark:text-gray-400">
+                  <p class="text-xs text-gray-500 dark:text-gray-400 print:text-gray-900 print:text-xs print:font-medium print:break-all">
                     {{ webhook.Url }}
                   </p>
                 </div>
               </div>
             </td>
             
-            <td class="px-4 py-3">
-              <div class="flex flex-wrap gap-1">
+            <td class="px-4 py-3 print:px-1 print:py-1">
+              <div class="flex flex-wrap gap-1 print:gap-0">
                 <span
                   v-for="event in webhook.Events"
                   :key="event"
-                  class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium"
+                  class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium print:px-1 print:py-0 print:text-xs print:mr-1"
                   :class="getEventBadgeClass(event)"
                 >
                   {{ event }}
@@ -62,19 +61,19 @@
               </div>
             </td>
             
-            <td class="px-4 py-3">
-              <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200">
+            <td class="px-4 py-3 print:px-1 print:py-1">
+              <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 print:px-1 print:py-0 print:text-xs">
                 {{ webhook.PayloadFormat.toUpperCase() }}
               </span>
             </td>
             
-            <td class="px-4 py-3">
-              <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200">
+            <td class="px-4 py-3 print:px-1 print:py-1">
+              <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 print:px-1 print:py-0 print:text-xs">
                 Active
               </span>
             </td>
             
-            <td class="px-4 py-3 text-right text-sm font-medium">
+            <td class="px-4 py-3 text-right text-sm font-medium print:hidden">
               <div class="flex justify-end space-x-2">
                 <button
                   @click="$emit('edit-webhook', { listId, webhook })"

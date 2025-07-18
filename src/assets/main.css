@@ -29,3 +29,79 @@ body {
   color: #1f2937;
   transition: background 0.3s ease, color 0.3s ease;
 }
+
+/* Print-specific styles */
+@media print {
+  * {
+    background: transparent !important;
+    color: black !important;
+    box-shadow: none !important;
+  }
+  
+  body {
+    background: white !important;
+    font-size: 12pt;
+    line-height: 1.4;
+  }
+  
+  /* Ensure page breaks work well */
+  .list-card {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+  
+  /* Override dark mode styles in print */
+  .dark * {
+    background: transparent !important;
+    color: black !important;
+  }
+  
+  /* Fix table layout for print - use auto layout for better content fitting */
+  table {
+    table-layout: auto !important;
+    width: 100% !important;
+  }
+  
+  /* Set minimum widths for print columns - 4 visible columns */
+  table th:nth-child(1), table td:nth-child(1) { min-width: 40% !important; } /* URL */
+  table th:nth-child(2), table td:nth-child(2) { min-width: 25% !important; } /* Events */
+  table th:nth-child(3), table td:nth-child(3) { min-width: 17% !important; } /* Format */
+  table th:nth-child(4), table td:nth-child(4) { min-width: 18% !important; } /* Status */
+  
+  /* Ensure hidden elements don't take up space in table layout */
+  .print\:hidden {
+    display: none !important;
+    width: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  
+  /* Remove any browser-added pseudo-elements and content in print */
+  * {
+    text-decoration: none !important;
+  }
+  
+  *::before,
+  *::after {
+    content: none !important;
+    display: none !important;
+  }
+  
+  /* Hide any link indicators or browser-generated content */
+  a::before,
+  a::after {
+    content: "" !important;
+    display: none !important;
+  }
+  
+  /* Force specific table cell styling to prevent content addition */
+  table td {
+    position: relative !important;
+  }
+  
+  table td::before,
+  table td::after {
+    content: none !important;
+    display: none !important;
+  }
+}

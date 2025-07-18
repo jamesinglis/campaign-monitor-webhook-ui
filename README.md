@@ -20,6 +20,7 @@ This single-page application (SPA) provides a visual interface for managing webh
 - 📊 **Visual Status Indicators** - See cache freshness and webhook counts at a glance
 - 🔄 **Client Switching** - Quick switch between clients without re-authentication
 - 🌙 **Dark Mode Support** - System-aware theme with manual toggle (light/dark/auto)
+- 🖨️ **Print-Optimized Reports** - Professional print layout with client names and expanded webhooks
 - ⚡ **Optimized Performance** - Sub-150KB bundle, <2s first paint, <1s operations
 
 ## Getting Started
@@ -126,6 +127,26 @@ The application includes a smart dark mode toggle in the top navigation bar:
 - **Dark** - Always dark theme
 
 Click the theme icon (computer/sun/moon) to cycle through modes.
+
+### Print Reports
+
+Generate professional print reports of your webhook configurations:
+
+1. **Navigate to the main dashboard** with all your lists and webhooks loaded
+2. **Use your browser's print function** (Ctrl+P / Cmd+P)
+3. **Preview the print layout** which includes:
+   - Clean header with app title and client name
+   - Summary statistics (Total Lists, Webhooks, Subscribers)
+   - All lists with webhooks automatically expanded
+   - Full webhook URLs (not truncated)
+   - Event types, formats, and status information
+   - No interactive elements (buttons, controls)
+
+#### Print Features
+- **Automatic expansion**: All webhook details are shown regardless of screen state
+- **Client identification**: Shows actual client names instead of IDs
+- **Optimized layout**: Proper column alignment and readable text sizes
+- **Professional formatting**: Clean black and white output suitable for documentation
 
 ### Switching Clients
 

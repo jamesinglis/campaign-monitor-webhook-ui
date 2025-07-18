@@ -1,8 +1,18 @@
 <template>
   <div class="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
-    <AppHeader />
+    <AppHeader class="print:hidden" />
     
-    <main class="max-w-7xl mx-auto py-8 sm:px-6 lg:px-8">
+    <!-- Print-only header -->
+    <div class="hidden print:block mb-8 border-b border-gray-300 pb-4">
+      <div class="text-center">
+        <h1 class="text-2xl font-bold text-black mb-2">Campaign Monitor Webhook UI</h1>
+        <p v-if="authStore.clientId" class="text-lg text-gray-700">
+          Client: {{ clientDisplayName }}
+        </p>
+      </div>
+    </div>
+
+    <main class="max-w-7xl mx-auto py-8 sm:px-6 lg:px-8 print:py-4">
       <!-- Authentication Form -->
       <div v-if="!authStore.isAuthenticated" class="max-w-lg mx-auto">
         <div class="bg-white dark:bg-gray-800 shadow-xl rounded-2xl p-8 border border-gray-200 dark:border-gray-700">
@@ -97,7 +107,7 @@
         </div>
         
         <!-- Actions Bar -->
-        <div v-if="authStore.clientId" class="bg-white dark:bg-gray-800 rounded-lg shadow p-4">
+        <div v-if="authStore.clientId" class="bg-white dark:bg-gray-800 rounded-lg shadow p-4 print:hidden">
           <div class="flex items-center">
             <div class="flex items-center space-x-4">
               <button
@@ -213,6 +223,7 @@
       :list-id="webhookListId"
       @close="showWebhookModal = false"
       @save="handleSaveWebhook"
+      class="print:hidden"
     />
   </div>
 </template>
@@ -249,6 +260,23 @@ const totalSubscribers = computed(() => {
   return dataStore.lists.reduce((total, list) => {
     return total + (list.TotalActiveSubscribers || 0)
   }, 0)
+})
+
+// Get client display name from multiple sources
+const clientDisplayName = computed(() => {
+  if (!authStore.clientId) return null
+  
+  // Try to get from dataStore clients
+  const client = dataStore.getClientById(authStore.clientId)
+  
+  // Try different possible name properties
+  const clientName = client?.Name || client?.BasicDetails?.CompanyName
+  if (clientName) {
+    return clientName
+  }
+  
+  // Fallback: Return the client ID
+  return authStore.clientId
 })
 
 // Cache status computed properties
