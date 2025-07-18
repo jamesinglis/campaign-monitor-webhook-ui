@@ -123,6 +123,10 @@ The application successfully proxies these Campaign Monitor v3.3 endpoints:
 - `ddev composer update` - Update PHP dependencies
 - `ddev php api/proxy.php` - Test PHP proxy directly
 
+**API Testing**:
+- `ddev php test-api.php` - Run comprehensive API connectivity tests
+- `ddev php test-curl-exact.php` - Run direct cURL tests
+
 **DDEV**:
 - `ddev start` - Start development environment
 - `ddev stop` - Stop development environment

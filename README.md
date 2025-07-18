@@ -227,6 +227,35 @@ campaign-monitor-webhook-ui/
 - Use Network tab to inspect API calls
 - SessionStorage can be viewed in DevTools
 
+### API Testing
+
+Two test files are available to validate Campaign Monitor API connectivity:
+
+**test-api.php** - Comprehensive API test suite
+- Tests multiple API versions (v3.1, v3.2, v3.3)
+- Validates both client-level and account-level API keys
+- Tests various endpoint patterns and authentication methods
+- Includes proxy endpoint testing
+
+**test-curl-exact.php** - Direct cURL test
+- Tests exact cURL commands that work with Campaign Monitor API
+- Validates webhook and list endpoints
+- Simple success/failure validation with clear output
+
+Both files require environment variables in `.env`:
+```
+TEST_CLIENT_API_KEY=your_client_api_key
+TEST_ACCOUNT_API_KEY=your_account_api_key
+TEST_CLIENT_ID=your_client_id
+TEST_LIST_ID=your_list_id
+```
+
+Run tests with:
+```bash
+ddev php test-api.php
+ddev php test-curl-exact.php
+```
+
 ## Troubleshooting
 
 ### Common Issues
