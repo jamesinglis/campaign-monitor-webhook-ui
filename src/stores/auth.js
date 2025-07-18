@@ -69,21 +69,46 @@ export const useAuthStore = defineStore('auth', {
       
       try {
         // Test account-level access first
-        await apiClient.getAccountClients()
-        this.accountType = 'account'
-        console.log('API key validated as account-level')
+        const clients = await apiClient.getAccountClients()
+        
+        // Both account and client-level keys can access /clients.json
+        // So we need to test a truly account-level endpoint
+        try {
+          await apiClient.getAccountBillingDetails()
+          
+          // If we get here, it's an account-level key
+          this.accountType = 'account'
+          console.log('API key validated as account-level (can access billing details)')
+        } catch (billingError) {
+          // If billing details fail with 401/403, it's likely a client-level key
+          if (billingError.response?.status === 401 || billingError.response?.status === 403) {
+            this.accountType = 'client'
+            console.log('API key detected as client-level (cannot access billing details)')
+            
+            // Auto-set client ID for client-level keys
+            if (Array.isArray(clients) && clients.length > 0) {
+              this.clientId = clients[0].ClientID
+              console.log('Auto-set client ID for client-level key:', this.clientId)
+            }
+          } else {
+            // If we can get clients but billing fails for other reasons, assume account-level
+            this.accountType = 'account'
+            console.log('API key validated as account-level (billing endpoint error but can access clients)')
+          }
+        }
+        
         return true
       } catch (error) {
         // If account-level fails, this is likely a client-level key
-        if (error.response?.status === 404 || error.response?.status === 401) {
+        if (error.response?.status === 404 || error.response?.status === 401 || error.response?.status === 403) {
           // For client-level keys, we can't fully validate without a client ID
           // But we can assume it's valid if it passed basic auth
           this.accountType = 'client'
-          console.log('API key detected as client-level')
+          console.log('API key detected as client-level (endpoint access denied)')
           return true
         }
         
-        // For other errors (403, 500, etc.), the key is likely invalid
+        // For other errors (500, network errors, etc.), the key is likely invalid
         console.error('API key validation failed:', error)
         this.accountType = null
         return false
