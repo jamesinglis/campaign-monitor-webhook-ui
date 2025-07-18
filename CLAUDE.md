@@ -68,6 +68,7 @@ This is a **completed project** with:
 - **Graceful error handling**: Inline messages, no disruptive toasts
 - **Dark mode support**: System-aware theme with manual toggle (system/light/dark)
 - **Print reports**: Professional print layout with client names and expanded webhooks
+- **Footer bar**: GitHub repository link and clickable version number (links to changelog)
 
 ## Directory Structure (Actual)
 
@@ -102,6 +103,7 @@ This is a **completed project** with:
 - **`src/views/HomeView.vue`** - Main application view
 - **`src/components/WebhookModal.vue`** - Webhook CRUD operations
 - **`src/components/ListCard.vue`** - List display with cache indicators
+- **`src/components/AppFooter.vue`** - Footer with GitHub link and version display
 
 ## Campaign Monitor API Integration
 
@@ -136,6 +138,8 @@ The application successfully proxies these Campaign Monitor v3.3 endpoints:
 ## Documentation Guidelines
 
 **CHANGELOG.md**: Do not update the changelog file unless/until we want to prepare a new version and the user explicitly asks for this. The changelog should only be updated when formally releasing a new version.
+
+**Version Management**: The application version is displayed in the footer and is pulled from `package.json` at build time. The version number is clickable and links to the changelog on GitHub. The user will manually increment the version number in `package.json` and update the CHANGELOG.md when preparing new releases.
 
 ## Development Workflow Notes
 

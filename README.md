@@ -21,6 +21,7 @@ This single-page application (SPA) provides a visual interface for managing webh
 - 🔄 **Client Switching** - Quick switch between clients without re-authentication
 - 🌙 **Dark Mode Support** - System-aware theme with manual toggle (light/dark/auto)
 - 🖨️ **Print-Optimized Reports** - Professional print layout with client names and expanded webhooks
+- 📋 **Footer Information** - GitHub repository link and clickable version number (links to changelog)
 - ⚡ **Optimized Performance** - Sub-150KB bundle, <2s first paint, <1s operations
 
 ## Getting Started

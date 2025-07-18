@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
+  <div class="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 flex flex-col">
     <AppHeader class="print:hidden" />
     
     <!-- Print-only header -->
@@ -12,7 +12,8 @@
       </div>
     </div>
 
-    <main class="max-w-7xl mx-auto py-8 sm:px-6 lg:px-8 print:py-4">
+    <main class="flex-1 w-full">
+      <div class="max-w-7xl mx-auto py-8 sm:px-6 lg:px-8 print:py-4">
       <!-- Authentication Form -->
       <div v-if="!authStore.isAuthenticated" class="max-w-lg mx-auto">
         <div class="bg-white dark:bg-gray-800 shadow-xl rounded-2xl p-8 border border-gray-200 dark:border-gray-700">
@@ -214,6 +215,7 @@
           />
         </div>
       </div>
+      </div>
     </main>
     
     <!-- Webhook Modal -->
@@ -225,6 +227,9 @@
       @save="handleSaveWebhook"
       class="print:hidden"
     />
+    
+    <!-- App Footer -->
+    <AppFooter />
   </div>
 </template>
 
@@ -242,6 +247,7 @@ import LoadingSpinner from '../components/LoadingSpinner.vue'
 import EmptyState from '../components/EmptyState.vue'
 import WebhookModal from '../components/WebhookModal.vue'
 import StatusIcon from '../components/StatusIcon.vue'
+import AppFooter from '../components/AppFooter.vue'
 
 const authStore = useAuthStore()
 const dataStore = useDataStore()
