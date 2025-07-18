@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ddev:*)",
+      "Bash(find:*)",
+      "Bash(ls:*)",
+      "Bash(npm create:*)",
+      "Bash(mkdir:*)",
+      "Bash(npm install)",
+      "Bash(npm install:*)",
+      "WebFetch(domain:campaign-monitor-webhook-ui.ddev.site)",
+      "Bash(npm run build:*)",
+      "WebFetch(domain:www.campaignmonitor.com)"
+    ],
+    "deny": []
+  }
+}

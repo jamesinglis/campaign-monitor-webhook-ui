@@ -1,0 +1,22 @@
+{
+    "name": "elevate/campaign-monitor-webhook-ui",
+    "description": "Campaign Monitor Webhook Management Application",
+    "type": "project",
+    "license": "MIT",
+    "require": {
+        "php": "^8.1",
+        "guzzlehttp/guzzle": "^7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "api/"
+        }
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
