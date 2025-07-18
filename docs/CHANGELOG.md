@@ -5,6 +5,37 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.0] - 2025-01-19
+
+### Added
+- **Dark Mode Support** - System-aware theme detection with manual toggle (system/light/dark)
+  - DarkModeToggle component with intuitive icons and tooltips
+  - Theme store with sessionStorage persistence
+  - All components updated with dark mode classes
+  - Configured Tailwind v4 with proper dark mode class generation
+- **Professional Print Support** - Print-optimized layout for webhook reports
+  - Clean print header with client name display
+  - Automatic webhook expansion in print view
+  - Hidden interactive elements when printing
+  - Optimized table layout with proper column alignment
+  - Enhanced client name resolution for both API key types
+- **Footer Bar** - GitHub repository link and version information
+  - Clickable version number linking to changelog on GitHub
+  - GitHub repository link with icon
+  - Sticky positioning (bottom of viewport when content is short)
+  - Hidden from print view to maintain clean reports
+
+### Changed
+- **Simplified Backend Dependencies** - Removed all external PHP dependencies
+  - Removed composer.json and Guzzle dependency (was unused)
+  - Backend now uses only native PHP with cURL
+  - Updated installation process (no Composer needed)
+  - Corrected documentation to reflect cURL usage throughout
+
+### Fixed
+- Hover state visibility for light mode toggle button
+- Removed debug console.log statements throughout application
+
 ## [1.0.0] - 2025-01-18
 
 ### Added
@@ -63,4 +94,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - No webhook testing functionality
 - No export/import capabilities
 
-[1.0.0]: https://github.com/your-org/campaign-monitor-webhook-ui/releases/tag/v1.0.0
+[1.1.0]: https://github.com/jamesinglis/campaign-monitor-webhook-ui/releases/tag/v1.1.0
+[1.0.0]: https://github.com/jamesinglis/campaign-monitor-webhook-ui/releases/tag/v1.0.0
